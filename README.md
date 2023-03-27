@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+# Afro-Book-Club KE by Jose Kupeka Muhlanga
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Introduction
 
-## Available Scripts
+The art of being an author is a very underrated discipline, we know of some of the famous African
+Authors such as Chinua Achebe and Chimamanda Ngozi who inspired while informing through
+their literal works. This sometimes plays an important role of Showcasing the African Mindset
+while also entertaining us.
 
-In the project directory, you can run:
+## Problem Statement
 
-### `npm start`
+We have many people authors and people who want to join into the craft of writing books but in
+order to gain the recognition to sharing what their mind hold , they would have to move heaven and
+earth in order to do so. At the same time we miss gaining on what others may have to say about
+particular issues while also missing out on the entertainment value that may arise from that.
+As Mentioned in the introduction, those Authors had to move heaven and earth in an industry that
+society does not give much interest in . But there are also those purists that want to be involved in
+that community and want their work to be seen. While doing so they aim to be corrected in the
+process of their literal journey.
+This is where Afro-Book_club KE comes in whereby we seek to offer a platform for authors to post
+their work and for occasional readers or even other authors can read the books available via the link
+provided by the author but also get a review of the same books. The platform could have a section
+where book reading events can be marketed .
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Minimum Viable Product
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. Ability to register Authors and readers details
+2. Ability to capture Authors Books details.
+3. Ability to review books by Authors.
+4. Ranking the authors works or rather make a notable Books Section.
+5. Should have an events sections where Book reading events and hosts
 
-### `npm test`
+### Technologies
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. React(HTML & JS).
+2. CSS.
+3. Ruby on Rails.
+4. SQL
+5. Postman
