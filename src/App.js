@@ -28,7 +28,7 @@ function App() {
         <Route exact path="/profile/:id" element={<User />} />
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/register" element={<Register />} />
-        <<Route exact path="/forgotpass" element={<ForgotPass />} />
+        <Route exact path="/forgotpass" element={<ForgotPass />} />
 
       </Routes>
 
