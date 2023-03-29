@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from 'react';
+import BookCard from "./BookCard";
 
 function Home(){
     return(
@@ -8,7 +9,7 @@ function Home(){
             </div>
 
             <div className = "featured Books">
-                
+
             </div>
         </>
         

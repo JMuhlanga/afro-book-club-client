@@ -1,7 +1,20 @@
-import React from "react";
 
-function Books(){
+import React, { useState } from 'react';
+import BookCard from './BookCard';
+
+function Books(props){
+    const bookid = props;
+    const booksData = 
+    
     return(
+        <>
+            <div className="books-cards-container">
+                {booksData.map(data)=>(
+                    <BookCard props={booksData} />
+                )}
+            </div>
+
+        </>
         
     );
 }
