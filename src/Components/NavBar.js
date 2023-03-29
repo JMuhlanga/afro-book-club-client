@@ -1,9 +1,9 @@
 import React from "react";
 
-function AddBook(){
+function NavBar(){
     return(
 
     );
 }
 
-export default AddBook;
+export default NavBar;
