@@ -9,6 +9,7 @@ import FooterSection from './Components/Footer';
 import Login from './Components/Login';
 import Book from './Components/Book';
 import Register from './Components/Register';
+import ForgotPass from './Components/ForgotPass';
 
 function App() {
   const [books, setBooks] = useState([]);
@@ -39,6 +40,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login />}/>
           <Route path="/register" element={<Register />} />
+          <Route path="/forgotpass" element={<ForgotPass />} />
 
 
           {books.map(book => (

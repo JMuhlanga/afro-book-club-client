@@ -4,6 +4,11 @@ import { Link } from 'react-router-dom';
 function NavBar(){
   const userId = sessionStorage.getItem("userId");
 
+  const handleLogout = () => {
+    sessionStorage.clear();
+    window.location.href = '/';
+  }
+
   return (
     <nav>
       <ul>
@@ -20,8 +25,11 @@ function NavBar(){
           <Link to="/about">About</Link>
         </li>
         {userId ? (
-          <li>
-            <Link to="/profile">{sessionStorage.getItem("userName")}</Link>
+          <li className="dropdown">
+            <Link to="/profile">{sessionStorage.getItem("userName")} <i className="fa fa-caret-down"></i></Link>
+            <div className="dropdown-content">
+              <Link to="#" onClick={handleLogout}>Logout</Link>
+            </div>
           </li>
         ) : (
           <li>
