@@ -1,51 +1,34 @@
-import React from "react";
+import React, { useState } from 'react';
 
-function AddBook(){
-    const [state, setState] = ({
-        title:"",
-        img:"",
-        bookLink:"",
-        description:"",
-        author:"",
-    });
+function AddBookForm({ userId, onFormSubmit }) {
+  const [title, setTitle] = useState('');
+  const [img, setImg] = useState('');
+  const [bookLink, setBookLink] = useState('');
+  const [description, setDescription] = useState('');
 
-    function handleChange(e) {
-        setState({
-          ...state,
-          [e.target.name]: e.target.value,
-        });
-    }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formData = { title, img, bookLink, description, authorId: userId };
+    onFormSubmit(formData);
+  };
 
-    function handleSubmit(e){
-        e.preventDefault();
-        fetch("http://127.0.0.1:3000/users",{
-            method: "POST",
-            headers: {
-                "Content-Type":"application/json"
-            },
-            body: JSON.stringify(state),
-        }).then((response)=>{
-            if(response.ok){
-                Window.location.href ='/login';
-            }
-        })
-    }
+  return (
+    <form onSubmit={handleSubmit}>
+      <label htmlFor="title">Title</label>
+      <input type="text" id="title" value={title} onChange={(e) => setTitle(e.target.value)} />
 
-    return(
-        <div>
-            <h3>Kindly provide  details about the Book Below</h3>
-            
-            <form onSubmit={handleSubmit}>
-                <input type="text" name="title" placeholder='Enter Title Here' value={state.title} onChange={handleChange} />
-                <input type="text" name="img" placeholder='Enter Image Link' value={state.img} onChange={handleChange} />
-                <input type="text" name="bookLink" placeholder='Enter Title Here' value={state.bookLink} onChange={handleChange} />
-                <input type="text" name="description" placeholder='Enter Title Here' value={state.description} onChange={handleChange} />
-                
-                <button type="submit" >Register</button>
-            </form>
+      <label htmlFor="img">Image</label>
+      <input type="text" id="img" value={img} onChange={(e) => setImg(e.target.value)} />
 
-        </div>
-    );
+      <label htmlFor="bookLink">Book Link</label>
+      <input type="text" id="bookLink" value={bookLink} onChange={(e) => setBookLink(e.target.value)} />
+
+      <label htmlFor="description">Description</label>
+      <textarea id="description" value={description} onChange={(e) => setDescription(e.target.value)} />
+
+      <button type="submit">Submit</button>
+    </form>
+  );
 }
 
-export default AddBook;
+export default AddBookForm;

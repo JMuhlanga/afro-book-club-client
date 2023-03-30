@@ -1,9 +1,9 @@
-
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 function Books() {
   const [books, setBooks] = useState([]);
+  const userId = sessionStorage.getItem("userId");
 
   useEffect(() => {
     fetch('/books')
@@ -37,6 +37,11 @@ function Books() {
             </div>
           ))}
         </div>
+        {userId && (
+          <div>
+            <Link to="/addbook">Add Book</Link>
+          </div>
+        )}
       </section>
     </>
   );
