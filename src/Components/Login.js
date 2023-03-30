@@ -11,7 +11,7 @@ function Login(){
 
     function handleSubmit(e){
         e.preventDefault();
-        fetch("http://127.0.0.1:3000/login",{
+        fetch("/login",{
             method: "POST",
             headers: {
                 "Content-Type":"application/json"
@@ -19,12 +19,12 @@ function Login(){
             body: JSON.stringify(state),
         }).then((response)=>{
             if(response.ok){
-                form.reset();
-
-                Window.location.href ='/home';
+                Window.location.href ='/';
             }
-        })
+        }).then((r)=>setUser(r));
     }
+
+    console.log(user);
 
     function handleChange(e) {
         setState({

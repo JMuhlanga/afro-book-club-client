@@ -1,23 +1,24 @@
 import React, { useEffect, useState }  from 'react';
-import BookCard from "./BookCard";
 
 function Home(){
-    const [bookObj, setBookObj] = useState([]);
+    const [books, setBooks] = useState([]);
+    
     useEffect(() => {
-        fetch("/books")
-          .then((r) => r.json())
-          .then((dataObj) => setBookObj(dataObj))
-      },[setBookObj])
+        fetch("http://127.0.0.1:3000/books")
+          .then(response => response.json()) // extract the JSON data
+          .then(data => {
+            setBooks(data); // set the state with the data
+          })
+          .catch(error => {
+            console.log(error);
+          });
+    }, []);
 
-    const books = bookObj.map((bobj)=>(
-        <>
-            <BookCard props={bobj}/>
-        </>
-    )
-    )
+    
     
     return(
         <>
+        <section>
             <div className = "hero-image">
 
                 <div className = "hero-text">
@@ -32,13 +33,35 @@ function Home(){
                     <button>Join-us</button>
 
                 </div>
-                
+
 
             </div>
+        </section>
+
+        <section>
 
             <div className = "featured Books">
-                    {books}
+
+                <div className="card-container">
+                    {books.map(book => (
+                        <div key={book.id} className="card">
+                            <img src={book.img} alt={book.title} />
+                            <div className="card-body">
+                            <h3>{book.title}</h3>
+                            <p>{book.user && book.user.username}</p>
+                            <button>Find out More</button>
+                            </div>
+                        </div>
+                    ))}
+
+                </div>
+
             </div>
+
+        </section>
+            
+
+            
         </>
         
     );
