@@ -1,44 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import '../Styles/Book.css';
 
 function Book({ book }) {
-  const [commentText, setCommentText] = useState('');
+    const [commentText,setCommentText] = useState('');
+    
 
-  const handleCommentSubmit = (event) => {
-    event.preventDefault();
+    const handleCommentSubmit = (event) => {
+        event.preventDefault();
 
-    const userId = sessionStorage.getItem('user_id');
+        const user_id = sessionStorage.getItem('userId');
+        const book_id = book.id;
+        const content = commentText;
 
-    if (!userId) {
-      console.error('User not logged in.');
-      return;
+        const commentData = {user_id,book_id,content};
+        
+        fetch('/comments',{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(commentData),
+        })
+        .then(response => {
+            if (response.ok) {
+              // Redirect to /books page
+              window.location.href = '/books';
+            } else {
+              // Handle error response
+              console.log('Error:', response.statusText);
+            }
+          })
+          .catch(error => {
+            console.log('Error:', error);
+          });
     }
-
-    fetch('/comments', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ 
-        content: commentText,
-        book_id: book.id,
-        user_id: userId,
-      }),
-    })
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        }
-        throw new Error('Something went wrong with the network request.');
-      })
-      .then((data) => {
-        console.log(data);
-        setCommentText('');
-      })
-      .catch((error) => {
-        console.error('There was an error!', error);
-      });
-  };
 
   return (
     <div className="book-container">

@@ -27,7 +27,7 @@ function Home() {
               as Chinua Achebe and Chimamanda Ngozi who inspired while informing through their literal works. This sometimes
               plays an important role of Showcasing the African Mindset while also entertaining us.
             </p>
-            <button>Join-us</button>
+            <Link to={'/register'}>Join us!</Link>
           </div>
         </div>
       </section>
