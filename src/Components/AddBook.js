@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../Styles/AddBooks.css';
 
 function AddBook({ userId, onFormSubmit }) {
   const [title, setTitle] = useState('');
@@ -34,21 +35,30 @@ function AddBook({ userId, onFormSubmit }) {
   
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="title">Title</label>
-      <input type="text" id="title" value={title} onChange={(e) => setTitle(e.target.value)} />
+    <div className="container">
+      <div className="background-layer"></div>
+      <div className="form-wrapper">
+        <div className="form-container">
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="title" className="label">Title</label>
+            <input type="text" id="title" value={title} onChange={(e) => setTitle(e.target.value)} className="input" />
 
-      <label htmlFor="img">Image</label>
-      <input type="text" id="img" value={img} onChange={(e) => setImg(e.target.value)} />
+            <label htmlFor="img" className="label">Image</label>
+            <input type="text" id="img" value={img} onChange={(e) => setImg(e.target.value)} className="input" />
 
-      <label htmlFor="bookLink">Book Link</label>
-      <input type="text" id="bookLink" value={bookLink} onChange={(e) => setBookLink(e.target.value)} />
+            <label htmlFor="bookLink" className="label">Book Link</label>
+            <input type="text" id="bookLink" value={bookLink} onChange={(e) => setBookLink(e.target.value)} className="input" />
 
-      <label htmlFor="description">Description</label>
-      <textarea id="description" value={description} onChange={(e) => setDescription(e.target.value)} />
+            <label htmlFor="description" className="label">Description</label>
+            <textarea id="description" value={description} onChange={(e) => setDescription(e.target.value)} className="input" />
 
-      <button type="submit">Submit</button>
-    </form>
+            <button type="submit" className="button">Submit</button>
+          </form>
+          </div>
+      </div>
+    </div>
+
+    
   );
 }
 

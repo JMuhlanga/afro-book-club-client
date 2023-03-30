@@ -1,0 +1,34 @@
+.book-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+  }
+  
+  .book-details {
+    max-width: 600px;
+    padding: 20px;
+    text-align: center;
+    margin: auto;
+  }
+  
+  .comments {
+    margin-top: 20px;
+    max-width: 600px;
+    text-align: left;
+    margin: auto;
+  }
+  
+  .comment {
+    margin-bottom: 10px;
+  }
+  
+  .user {
+    font-weight: bold;
+  }
+  
+  .text {
+    margin-top: 5px;
+  }
+  

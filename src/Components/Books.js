@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import '../Styles/Books.css';
 
 function Books() {
   const [books, setBooks] = useState([]);
@@ -20,30 +21,35 @@ function Books() {
   }, []);
 
   return (
-    <>
+    <div className="container">
       <section>
         <div>
             <h2><b>Here are Some of the Books on our site</b></h2>
         </div>
         <div className="featured-books">
-          {books.map(book => (
-            <div key={book.id} className="card">
-              <img src={book.img} alt={book.title} />
-              <div className="card-body">
-                <h3>{book.title}</h3>
-                <p>{book.user ? book.user.username : ''}</p>
-                <Link to={`/books/${book.id}`}>Find out More</Link>
+          <div className="card-container">
+            {books.map(book => (
+              <div key={book.id} className="card">
+                <img src={book.img || '../Images/stock.jpg'} alt={book.title}  />
+                <div className="card-body">
+                  <h3>{book.title}</h3>
+                  <p>{book.user ? book.user.username : ''}</p>
+                  <Link to={`/books/${book.id}`}>Find out More</Link>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
-        {userId && (
-          <div>
-            <Link to="/addbook">Add Book</Link>
+            ))}
           </div>
-        )}
+            
+          </div>
+
+          {userId && (
+              <div className="addmore-container">
+                <Link to="/addbook">Add Book</Link>
+              </div>
+            )}
+          
       </section>
-    </>
+    </div>
   );
 }
 

@@ -39,7 +39,7 @@ function Home() {
 
                 <div key={book.id} className="card">
                     {book.img ? (
-                        <img src={book.img} alt={book.title} onError={(e) => { e.target.onerror = null; e.target.src = "../Images/placeholder.jpg" }} />
+                        <img src={book.img || '../Images/stock.jpg'} alt={book.title}  />
 
                     ) : (
                         <div className="placeholder-image" />
