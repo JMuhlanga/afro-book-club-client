@@ -1,50 +1,69 @@
-import React, { useState }  from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-function Login(){
-    let [user, setUser] = useState([]);
-    const [state, setState] = ({
-        email:"",
-        password:""
+function LoginForm({ onSubmit }) {
+  const [state, setState] = useState({
+    email: "",
+    password: ""
+  });
+
+  function handleChange(e) {
+    setState({
+      ...state,
+      [e.target.name]: e.target.value,
     });
-    
+  }
 
-    function handleSubmit(e){
-        e.preventDefault();
-        fetch("/login",{
-            method: "POST",
-            headers: {
-                "Content-Type":"application/json"
-            },
-            body: JSON.stringify(state),
-        }).then((response)=>{
-            if(response.ok){
-                Window.location.href ='/';
-            }
-        }).then((r)=>setUser(r));
-    }
+  function handleSubmit(e) {
+    e.preventDefault();
+    onSubmit(state);
+  }
 
-    console.log(user);
+  return (
+    <form onSubmit={handleSubmit}>
+      <input type="email" name="email" placeholder="Email" value={state.email} onChange={handleChange} required />
+      <input type="password" name="password" placeholder="Password" value={state.password} onChange={handleChange} required />
+      <button type="submit" className="login-button">Log In</button>
+      <Link to="/forgotpass" className="forgot-password">Forgot Password?</Link>
+      <Link to="/register" className="register">Not Yet Registered?</Link>
+    </form>
+  );
+}
 
-    function handleChange(e) {
-        setState({
-          ...state,
-          [e.target.name]: e.target.value,
+function Login() {
+  const [user, setUser] = useState(null);
+
+  function handleSubmit(state) {
+    fetch("/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(state),
+    }).then((response) => {
+      if (response.ok) {
+        response.json().then(data => {
+          sessionStorage.setItem("userId", data.user_id);
+          sessionStorage.setItem("userName", data.name); 
+          setUser(data);
+          window.location.href = '/';
         });
-    }
+      }
+    });
+  }
+  
 
-    return(
-        <div>
-            <h2>Welcome Back</h2>
-            <h3>Kindly Enter your details below in order to access the Page</h3>
-            <form onSubmit={handleSubmit}>
-                <input type="email" name="email" placeholder="user@email.com" value={state.email} onChange={handleChange} required />
-                <input type="password" name="password" placeholder="password*" value={state.password} onChange={handleChange} required />
-                <button type="submit" className="login-button">Log - In</button>
-                <Link to="/forgotpass" className="forgot-password">Forgot PIN?</Link>
-            </form>
-        </div>
-    );
+  console.log(user);
+
+  return (
+    <div className="login-page">
+      <h2 className="login-title">Welcome Back</h2>
+      <h3 className="login-subtitle">Please enter your details below to access the page</h3>
+      <div className="login-form-container">
+        <LoginForm onSubmit={handleSubmit} />
+      </div>
+    </div>
+  );
 }
 
 export default Login;

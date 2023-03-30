@@ -1,20 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 function Register(){
 
-    
-        
-        const [state, setState] = ({
-            username:"",
-            email:"",
-            password:"",
-            repeatPassword:""
-        });
+    const [state, setState] = useState({
+        username:"",
+        email:"",
+        password:"",
+        repeatPassword:""
+    });
 
     function handleChange(e) {
         setState({
           ...state,
           [e.target.name]: e.target.value,
+        });
+    }
+
+    function handleRepeatPasswordChange(e) {
+        setState({
+          ...state,
+          repeatPassword: e.target.value,
         });
     }
 
@@ -25,10 +30,15 @@ function Register(){
             headers: {
                 "Content-Type":"application/json"
             },
-            body: JSON.stringify(state),
+            body: JSON.stringify({
+                username: state.username,
+                email: state.email,
+                password: state.password,
+                password_confirmation: state.repeatPassword
+            }),
         }).then((response)=>{
             if(response.ok){
-                Window.location.href ='/login';
+                window.location.href ='/login';
             }
         })
     }
@@ -44,7 +54,7 @@ function Register(){
                 <input type="text" name="username" placeholder='User Name' value={state.username} onChange={handleChange} />
                 <input type="text" name="email" placeholder='Email*' value={state.email} onChange={handleChange}  />
                 <input type="password" name="password" placeholder="Password*" value={state.password} onChange={handleChange}  />
-                <input type="password" name="repeatPassword" placeholder="Repeat Password*" value={state.repeatPassword} onChange={handleChange} />
+                <input type="password" name="repeatPassword" placeholder="Repeat Password*" value={state.repeatPassword} onChange={handleRepeatPasswordChange} />
                 <button type="submit" >Register</button>
                 
             </form>

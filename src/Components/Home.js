@@ -4,7 +4,7 @@ function Home(){
     const [books, setBooks] = useState([]);
     
     useEffect(() => {
-        fetch("http://127.0.0.1:3000/books")
+        fetch("/books")
           .then(response => response.json()) // extract the JSON data
           .then(data => {
             setBooks(data); // set the state with the data

@@ -1,5 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function Books() {
   const [books, setBooks] = useState([]);
@@ -21,6 +22,9 @@ function Books() {
   return (
     <>
       <section>
+        <div>
+            <h2><b>Here are Some of the Books on our site</b></h2>
+        </div>
         <div className="featured-books">
           {books.map(book => (
             <div key={book.id} className="card">
@@ -28,7 +32,7 @@ function Books() {
               <div className="card-body">
                 <h3>{book.title}</h3>
                 <p>{book.user ? book.user.username : ''}</p>
-                <button>Find out More</button>
+                <Link to={`/books/${book.id}`}>Find out More</Link>
               </div>
             </div>
           ))}

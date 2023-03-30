@@ -1,21 +1,16 @@
-import React, { useState,useEffect } from 'react';
+import React from 'react';
 
-function Book(bookId){
+function Book({book}){
 
-    const [bookObj, setBookObj] = useState([]);
-    useEffect(() => {
-        fetch("http://127.0.0.1:3000/books/{$bookid}")
-          .then((r) => r.json())
-          .then((dataObj) => setBookObj(dataObj))
-      },[setBookObj])
 
     return(
-        <div className="book-page">
+        <div className="book-details">
+            <h2>{book.title}</h2>
+            <img src={book.img} alt={book.title} />
+            <p><b>Author: </b>{book.author}</p>
+            <p><b>Published:</b> {book.created_at}</p>
             
-                <h2>{bookObj.title}</h2>
-                <img src={bookObj.img} alt={bookObj.title} />
-                <h3><b>Author - {bookObj.user.username} </b></h3>
-                
+            <p>{book.description}</p>
         </div>
     );
 }
