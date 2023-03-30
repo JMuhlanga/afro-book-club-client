@@ -24,7 +24,7 @@ function Book({ book }) {
         .then(response => {
             if (response.ok) {
               // Redirect to /books page
-              window.location.href = window.location.href;
+              window.location.href = '/books';
             } else {
               // Handle error response
               console.log('Error:', response.statusText);
@@ -48,6 +48,7 @@ function Book({ book }) {
           <b>Published:</b> {book.created_at}
         </p>
 
+        <p><b>Link: </b>{book.bookLink}</p>
         <p>{book.description}</p>
 
         {book.comments && book.comments.length > 0 && (
