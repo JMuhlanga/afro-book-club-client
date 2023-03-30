@@ -1,7 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState }  from 'react';
 import BookCard from "./BookCard";
 
 function Home(){
+    const [bookObj, setBookObj] = useState([]);
+    useEffect(() => {
+        fetch("/books")
+          .then((r) => r.json())
+          .then((dataObj) => setBookObj(dataObj))
+      },[setBookObj])
+
+    const books = bookObj.map((bobj)=>(
+        <>
+            <BookCard props={bobj}/>
+        </>
+    )
+    )
     
     return(
         <>
@@ -9,7 +22,7 @@ function Home(){
 
                 <div className = "hero-text">
 
-                    <h1 style="font-size:50px">Welcome to Afro Book Club</h1>
+                    <h1>Welcome to Afro Book Club</h1>
                     <p>
                         The art of being an author is a very underrated discipline, we know of some of the famous African
                         Authors such as Chinua Achebe and Chimamanda Ngozi who inspired while informing through
@@ -24,7 +37,7 @@ function Home(){
             </div>
 
             <div className = "featured Books">
-
+                    {books}
             </div>
         </>
         

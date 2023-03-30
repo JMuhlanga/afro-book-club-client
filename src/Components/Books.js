@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import BookCard from './BookCard';
 
 function Books(props){
-    const bookid = props;
-    const booksData = 
+    const bookId = props;
+    const booksData = ;
     
     return(
         <>
