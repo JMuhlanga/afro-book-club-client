@@ -1,16 +1,37 @@
 import React, { useState } from 'react';
 
-function AddBookForm({ userId, onFormSubmit }) {
+function AddBook({ userId, onFormSubmit }) {
   const [title, setTitle] = useState('');
   const [img, setImg] = useState('');
   const [bookLink, setBookLink] = useState('');
   const [description, setDescription] = useState('');
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const formData = { title, img, bookLink, description, authorId: userId };
-    onFormSubmit(formData);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const user_Id = sessionStorage.getItem('userId');
+
+    const bookData = {title, img, bookLink, description, user_Id};
+    fetch('/books', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(bookData),
+    })
+    .then(response => {
+      if (response.ok) {
+        // Redirect to /books page
+        window.location.href = '/books';
+      } else {
+        // Handle error response
+        console.log('Error:', response.statusText);
+      }
+    })
+    .catch(error => {
+      console.log('Error:', error);
+    });
   };
+  
 
   return (
     <form onSubmit={handleSubmit}>
@@ -31,4 +52,4 @@ function AddBookForm({ userId, onFormSubmit }) {
   );
 }
 
-export default AddBookForm;
+export default AddBook;

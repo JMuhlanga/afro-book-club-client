@@ -10,6 +10,7 @@ import Login from './Components/Login';
 import Book from './Components/Book';
 import Register from './Components/Register';
 import ForgotPass from './Components/ForgotPass';
+import AddBook from './Components/AddBook';
 
 function App() {
   const [books, setBooks] = useState([]);
@@ -41,6 +42,7 @@ function App() {
           <Route path="/login" element={<Login />}/>
           <Route path="/register" element={<Register />} />
           <Route path="/forgotpass" element={<ForgotPass />} />
+          <Route path="/addbook" element={<AddBook />}/>
 
 
           {books.map(book => (
