@@ -65,6 +65,7 @@ function Book({ book }) {
           </div>
         )}
 
+
         <form onSubmit={handleCommentSubmit}>
           <label htmlFor="comment-text">Add a comment:</label>
           <br />
