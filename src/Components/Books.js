@@ -23,10 +23,11 @@ function Books() {
   return (
     <div className="container">
       <section>
-        <div>
-            <h2><b>Here are Some of the Books on our site</b></h2>
-        </div>
+        
         <div className="featured-books">
+          <div>
+              <h2><b>Here are Some of the Books on our site</b></h2>
+          </div>
           <div className="card-container">
             {books.map(book => (
               <div key={book.id} className="card">

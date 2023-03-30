@@ -1,0 +1,21 @@
+#about-page .about-container {
+    background-color: rgba(255, 255, 255, 0.8); /* set background color to white with some transparency */
+    backdrop-filter: blur(10px); /* add a blur effect */
+    padding: 20px; /* add some padding to the container */
+  }
+  
+  .about-container {
+    max-width: 800px; /* set a maximum width for the container */
+    margin: 0 auto; /* center the container */
+  }
+  
+  .text-Container,
+  .text-Container-2 {
+    margin: 20px 0; /* add some margin to the text containers */
+  }
+  
+  .text-Container p,
+  .text-Container-2 p {
+    line-height: 1.5; /* set a comfortable line height for the text */
+  }
+  

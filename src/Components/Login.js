@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import '../Styles/Login.css';
 
 function LoginForm({ onSubmit }) {
   const [state, setState] = useState({
@@ -24,7 +25,7 @@ function LoginForm({ onSubmit }) {
       <input type="email" name="email" placeholder="Email" value={state.email} onChange={handleChange} required />
       <input type="password" name="password" placeholder="Password" value={state.password} onChange={handleChange} required />
       <button type="submit" className="login-button">Log In</button>
-      <Link to="/forgotpass" className="forgot-password">Forgot Password?</Link>
+      
       <Link to="/register" className="register">Not Yet Registered?</Link>
     </form>
   );
@@ -56,13 +57,16 @@ function Login() {
   console.log(user);
 
   return (
-    <div className="login-page">
-      <h2 className="login-title">Welcome Back</h2>
-      <h3 className="login-subtitle">Please enter your details below to access the page</h3>
-      <div className="login-form-container">
-        <LoginForm onSubmit={handleSubmit} />
+    <div className = "container">
+      <div className="login-page">
+        <h1 className="login-title">Welcome Back</h1>
+        <h3 className="login-subtitle">Please enter your details below to access the page</h3>
+        <div className="login-form-container">
+          <LoginForm onSubmit={handleSubmit} />
+        </div>
       </div>
     </div>
+    
   );
 }
 

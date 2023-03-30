@@ -30,11 +30,7 @@ function NavBar() {
               Books
             </Link>
           </li>
-          <li>
-            <Link to="/authors" onClick={handleNavClick}>
-              Authors
-            </Link>
-          </li>
+          
           <li>
             <Link to="/about" onClick={handleNavClick}>
               About
