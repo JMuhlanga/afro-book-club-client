@@ -1,39 +1,40 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import '../Styles/Book.css';
 
 function Book({ book }) {
-    const [commentText,setCommentText] = useState('');
-    
+  const [commentText, setCommentText] = useState('');
 
-    const handleCommentSubmit = (event) => {
-        event.preventDefault();
+  const handleCommentSubmit = (event) => {
+    event.preventDefault();
 
-        const user_id = sessionStorage.getItem('userId');
-        const book_id = book.id;
-        const content = commentText;
+    const user_id = sessionStorage.getItem('userId');
+    const book_id = book.id;
+    const content = commentText;
 
-        const commentData = {user_id,book_id,content};
-        
-        fetch('/comments',{
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(commentData),
-        })
-        .then(response => {
-            if (response.ok) {
-              // Redirect to /books page
-              window.location.href = '/books';
-            } else {
-              // Handle error response
-              console.log('Error:', response.statusText);
-            }
-          })
-          .catch(error => {
-            console.log('Error:', error);
-          });
-    }
+    const commentData = { user_id, book_id, content };
+
+    fetch('/comments', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(commentData),
+    })
+      .then((response) => {
+        if (response.ok) {
+          // Redirect to /books page
+          window.location.href = '/books';
+        } else {
+          // Handle error response
+          console.log('Error:', response.statusText);
+        }
+      })
+      .catch((error) => {
+        console.log('Error:', error);
+      });
+  };
+
+  const authorName = book.user ? book.user.username : 'Unknown';
 
   return (
     <div className="book-container">
@@ -42,13 +43,16 @@ function Book({ book }) {
         <img src={book.img} alt={book.title} />
         <p>
           <b>Author: </b>
-          {book.author}
+          {authorName}
         </p>
         <p>
           <b>Published:</b> {book.created_at}
         </p>
 
-        <p><b>Link: </b>{book.bookLink}</p>
+        <p>
+          <b>Link: </b>
+          {book.bookLink}
+        </p>
         <p>{book.description}</p>
 
         {book.comments && book.comments.length > 0 && (
@@ -64,7 +68,6 @@ function Book({ book }) {
             ))}
           </div>
         )}
-
 
         <form onSubmit={handleCommentSubmit}>
           <label htmlFor="comment-text">Add a comment:</label>

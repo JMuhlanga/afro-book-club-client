@@ -1,17 +1,22 @@
 import React, { useState } from 'react';
 import '../Styles/AddBooks.css';
 
-function AddBook({ userId, onFormSubmit }) {
-  const [title, setTitle] = useState('');
-  const [img, setImg] = useState('');
-  const [bookLink, setBookLink] = useState('');
-  const [description, setDescription] = useState('');
+function AddBook() {
+  const [bookData, setBookData] = useState({
+    title: '',
+    img: '',
+    bookLink: '',
+    description: '',
+    user_Id: sessionStorage.getItem('userId')
+  });
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setBookData({ ...bookData, [name]: value });
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const user_Id = sessionStorage.getItem('userId');
-
-    const bookData = {title, img, bookLink, description, user_Id};
     fetch('/books', {
       method: 'POST',
       headers: {
@@ -32,7 +37,6 @@ function AddBook({ userId, onFormSubmit }) {
       console.log('Error:', error);
     });
   };
-  
 
   return (
     <div className="container">
@@ -41,24 +45,22 @@ function AddBook({ userId, onFormSubmit }) {
         <div className="form-container">
           <form onSubmit={handleSubmit}>
             <label htmlFor="title" className="label">Title</label>
-            <input type="text" id="title" value={title} onChange={(e) => setTitle(e.target.value)} className="input" />
+            <input type="text" id="title" name="title" value={bookData.title} onChange={handleChange} className="input" />
 
             <label htmlFor="img" className="label">Image</label>
-            <input type="text" id="img" value={img} onChange={(e) => setImg(e.target.value)} className="input" />
+            <input type="text" id="img" name="img" value={bookData.img} onChange={handleChange} className="input" />
 
             <label htmlFor="bookLink" className="label">Book Link</label>
-            <input type="text" id="bookLink" value={bookLink} onChange={(e) => setBookLink(e.target.value)} className="input" />
+            <input type="text" id="bookLink" name="bookLink" value={bookData.bookLink} onChange={handleChange} className="input" />
 
             <label htmlFor="description" className="label">Description</label>
-            <textarea id="description" value={description} onChange={(e) => setDescription(e.target.value)} className="input" />
+            <textarea id="description" name="description" value={bookData.description} onChange={handleChange} className="input" />
 
             <button type="submit" className="button">Submit</button>
           </form>
-          </div>
+        </div>
       </div>
     </div>
-
-    
   );
 }
 

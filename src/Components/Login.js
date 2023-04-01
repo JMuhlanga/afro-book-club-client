@@ -38,7 +38,8 @@ function Login() {
     fetch("/login", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "X-CSRF-Token": "no-csrf" // Add this header
       },
       body: JSON.stringify(state),
     }).then((response) => {

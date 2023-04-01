@@ -3,40 +3,29 @@ import '../Styles/Register.css';
 
 function Register(){
 
-    const [state, setState] = useState({
+    const [formValues, setFormValues] = useState({
         username:"",
         email:"",
         password:"",
-        repeatPassword:""
+        password_confirmation:""
     });
+    
 
     function handleChange(e) {
-        setState({
-          ...state,
+        setFormValues({
+          ...formValues,
           [e.target.name]: e.target.value,
-        });
-    }
-
-    function handleRepeatPasswordChange(e) {
-        setState({
-          ...state,
-          repeatPassword: e.target.value,
         });
     }
 
     function handleSubmit(e){
         e.preventDefault();
-        fetch("http://127.0.0.1:3000/users",{
+        fetch("/signup",{
             method: "POST",
             headers: {
                 "Content-Type":"application/json"
             },
-            body: JSON.stringify({
-                username: state.username,
-                email: state.email,
-                password: state.password,
-                password_confirmation: state.repeatPassword
-            }),
+            body: JSON.stringify({ user: formValues }),
         }).then((response)=>{
             if(response.ok){
                 window.location.href ='/login';
@@ -53,10 +42,12 @@ function Register(){
 
                 <form onSubmit={handleSubmit}>
 
-                    <input type="text" name="username" placeholder='User Name' value={state.username} onChange={handleChange} />
-                    <input type="text" name="email" placeholder='Email*' value={state.email} onChange={handleChange}  />
-                    <input type="password" name="password" placeholder="Password*" value={state.password} onChange={handleChange}  />
-                    <input type="password" name="repeatPassword" placeholder="Repeat Password*" value={state.repeatPassword} onChange={handleRepeatPasswordChange} />
+                    <input type="text" name="username" placeholder='User Name' value={formValues.username} onChange={handleChange} />
+                    <input type="text" name="email" placeholder='Email*' value={formValues.email} onChange={handleChange}  />
+                    <input type="password" name="password" placeholder="Password*" value={formValues.password} onChange={handleChange}  />
+                    <input type="password" name="password_confirmation" placeholder="Repeat Password*" value={formValues.password_confirmation} onChange={handleChange} />
+
+
                     <button type="submit" >Register</button>
                     
                 </form>
