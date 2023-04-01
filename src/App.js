@@ -29,6 +29,10 @@ function App() {
       });
   }, []);
 
+  const bookRoutes = books.map(book => (
+    <Route key={book.id} path={`/books/${book.id}`} element={<Book book={book} />} />
+  ));
+
   return (
     <Router>
       <div className="App">
@@ -39,17 +43,14 @@ function App() {
           <Route exact path="/books" element={<Books />} />
           <Route path="/authors" element={<Authors />} />
           <Route path="/about" element={<About />} />
-          <Route path="/login" element={<Login />}/>
+          <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/forgotpass" element={<ForgotPass />} />
-          <Route path="/addbook" element={<AddBook />}/>
+          <Route path="/addbook" element={<AddBook />} />
 
-
-          {books.map(book => (
-            <Route key={book.id} path={`/books/${book.id}`} element={<Book book={book} />} />
-          ))}
+          {bookRoutes}
         </Routes>
-        
+
         <FooterSection />
       </div>
     </Router>
