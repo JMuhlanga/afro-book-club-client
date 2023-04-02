@@ -7,14 +7,20 @@ function Home() {
 
   useEffect(() => {
     fetch('/books')
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
       .then((data) => {
         setBooks(data);
       })
       .catch((error) => {
-        console.log(error);
+        console.error('Error fetching books:', error);
       });
   }, []);
+  
 
   return (
     <div className="container">
