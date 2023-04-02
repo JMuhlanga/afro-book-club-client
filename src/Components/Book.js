@@ -13,7 +13,7 @@ function Book({ book }) {
 
     const commentData = { user_id, book_id, content };
 
-    fetch('http://apple-pie-07675.herokuapp.com/comments', {
+    fetch('https://apple-pie-07675.herokuapp.com/comments', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

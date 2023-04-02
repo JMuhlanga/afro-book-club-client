@@ -17,7 +17,7 @@ function AddBook() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    fetch('http://apple-pie-07675.herokuapp.com/books', {
+    fetch('https://apple-pie-07675.herokuapp.com/books', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
