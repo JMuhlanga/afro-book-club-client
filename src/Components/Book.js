@@ -23,7 +23,7 @@ function Book({ book }) {
       .then((response) => {
         if (response.ok) {
           // Redirect to /books page
-          window.location.href = '/books';
+          window.location.href = '/';
         } else {
           // Handle error response
           console.log('Error:', response.statusText);
