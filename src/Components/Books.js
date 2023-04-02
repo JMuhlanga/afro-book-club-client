@@ -7,7 +7,7 @@ function Books() {
   const userId = sessionStorage.getItem("userId");
 
   useEffect(() => {
-    fetch('https://apple-pie-07675.herokuapp.com/books')
+    fetch('http://apple-pie-07675.herokuapp.com/books')
       .then(response => {
         if (response.ok) {
           return response.json();

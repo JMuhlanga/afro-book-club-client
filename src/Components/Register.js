@@ -20,7 +20,7 @@ function Register(){
 
     function handleSubmit(e){
         e.preventDefault();
-        fetch("https://apple-pie-07675.herokuapp.com/signup",{
+        fetch("http://apple-pie-07675.herokuapp.com/signup",{
             method: "POST",
             headers: {
                 "Content-Type":"application/json"
