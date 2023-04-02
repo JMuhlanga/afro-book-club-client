@@ -34,7 +34,7 @@ function Register(){
     }
 
     return(
-        <div id="reg" className="container">
+        <div id="reg" className="reg-container">
             <div className="registration-form">
                 <h2>Welcome to our Afro-Book-Club-Ke</h2>
 

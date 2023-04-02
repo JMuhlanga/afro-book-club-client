@@ -11,6 +11,9 @@ import Book from './Components/Book';
 import Register from './Components/Register';
 import ForgotPass from './Components/ForgotPass';
 import AddBook from './Components/AddBook';
+import User from './Components/User';
+import MyBooks from './Components/MyBooks';
+import EditBook from './Components/EditBook';
 
 function App() {
   const [books, setBooks] = useState([]);
@@ -47,6 +50,9 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/forgotpass" element={<ForgotPass />} />
           <Route path="/addbook" element={<AddBook />} />
+          <Route path="/user" element={<User />} />
+          <Route path="/mybooks" element={<MyBooks />} />
+          <Route path="/books/:id/edit" element={<EditBook />} />
 
           {bookRoutes}
         </Routes>

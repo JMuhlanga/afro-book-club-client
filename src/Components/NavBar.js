@@ -38,11 +38,13 @@ function NavBar() {
           </li>
           {userId ? (
             <li className="dropdown">
-              <Link to="/profile" onClick={handleNavClick}>
+              <Link to="#" onClick={handleNavClick}>
                 {sessionStorage.getItem("userName")}{" "}
                 <i className="fa fa-caret-down"></i>
               </Link>
               <div className="dropdown-content">
+                <Link to="/user">Profile</Link>
+                <Link to="/mybooks">My Books</Link>
                 <Link to="#" onClick={handleLogout}>
                   Logout
                 </Link>
