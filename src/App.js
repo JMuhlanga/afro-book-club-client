@@ -16,7 +16,7 @@ function App() {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    fetch('/books')
+    fetch('https://apple-pie-07675.herokuapp.com/books')
       .then(response => {
         if (response.ok) {
           return response.json();

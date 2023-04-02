@@ -35,7 +35,7 @@ function Login() {
   const [user, setUser] = useState(null);
 
   function handleSubmit(state) {
-    fetch("/login", {
+    fetch("https://apple-pie-07675.herokuapp.com/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
