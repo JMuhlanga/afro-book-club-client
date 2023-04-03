@@ -1,8 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow&display=swap');
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Barlow', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-image: url('/src/Images/background.jpg');
@@ -12,9 +12,8 @@ body {
   background-size: cover;
 }
 
-/* code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-} */
+code {
+  font-family: 'Barlow', sans-serif;
+}
 
 
